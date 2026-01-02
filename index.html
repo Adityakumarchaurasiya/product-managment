@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Product Management – Interactive UI</title>
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="navbar">
+  <h2>🛒 Product Manager</h2>
+  <div class="nav-actions">
+    <button onclick="setView('list')">List</button>
+    <button onclick="setView('card')">Cards</button>
+    <button onclick="toggleDark()">🌙</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="search-box"><input id="searchInput" placeholder="Search product..." /></div>
+
+  <div class="controls">
+    <select id="sortSelect">
+      <option value="">Sort</option>
+      <option value="name-asc">Name A–Z</option>
+      <option value="price-asc">Price ↑</option>
+      <option value="price-desc">Price ↓</option>
+    </select>
+
+    <select id="pageSizeSelect">
+      <option value="5">5 / page</option>
+      <option value="10">10 / page</option>
+      <option value="20">20 / page</option>
+    </select>
+
+    <button onclick="exportJSON()">Export JSON</button>
+    <button onclick="exportCSV()">Export CSV</button>
+  </div>
+
+  <form class="form" id="productForm">
+    <h3 id="formTitle">Add Product</h3>
+    <div class="form-grid">
+      <div><input id="name" placeholder="Product Name *" /><div class="error" id="nameError"></div></div>
+      <div><input type="number" id="price" placeholder="Price *" /><div class="error" id="priceError"></div></div>
+      <div><input id="category" placeholder="Category *" /><div class="error" id="categoryError"></div></div>
+      <input type="number" id="stock" placeholder="Stock" />
+    </div>
+    <textarea id="description" placeholder="Description"></textarea><br/><br/>
+    <button class="btn btn-add">Save Product</button>
+  </form>
+
+  <div class="toggle">
+    <button id="listBtn" class="active" onclick="setView('list')">List View</button>
+    <button id="cardBtn" onclick="setView('card')">Card View</button>
+  </div>
+
+  <div id="productContainer"></div>
+  <div class="pagination" id="pagination"></div>
+
+  <div id="testResults"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
